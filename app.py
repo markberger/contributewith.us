@@ -1,9 +1,10 @@
+import os
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
 from bson import json_util
-from settings import *
 
+MONGOHQ = os.environ['MONGOHQ']
 db = MongoClient(MONGOHQ)['issues_io']['repos']
 app = Flask(__name__)
 
