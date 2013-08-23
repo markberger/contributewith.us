@@ -1,0 +1,68 @@
+html, body {
+	background-color: #fff;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), color-stop(73%, #fff), to(#fff));
+	background-image: -webkit-linear-gradient(#eee, #fff 73%, #fff);
+	background-image: -moz-linear-gradient(top, #eee, #fff 73%, #fff);
+	background-image: -ms-linear-gradient(#eee, #fff 73%, #fff);
+	background-image: -o-linear-gradient(#eee, #fff 73%, #fff);
+	background-image: linear-gradient(#eee, #fff 73%, #fff);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 91%;
+}
+
+#content {
+	min-height: 100%;
+	position: relative;
+}
+
+p {
+	font-family: 'Lora', serif;
+}
+
+h2 {
+	font-family: 'Lora', serif;
+	text-align: center;
+	font-size: 350%;
+	margin-top: 40px;
+	margin-bottom: 15px;
+	text-shadow: 1px;
+}
+
+h4 {
+	font-family: 'Lora', serif;
+	text-align: center;
+	font-size:100%;
+}
+
+.main {
+	margin-top: 40px;
+}
+
+.wrapper {
+	padding: 40px 0px;
+
+	text-align: center;
+	border-radius: 10px;
+}
+
+.repoList {
+	list-style: none;
+	text-align: center;
+	margin: 0;
+}
+
+.repoList li {
+	margin-bottom: 5px;
+}
+
+.footer {
+	text-align: center;
+	position: relative;
+	width: 100%;
+	padding-bottom: 20px;
+	margin-top:20px;
+}
