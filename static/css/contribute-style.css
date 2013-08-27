@@ -59,6 +59,12 @@ h4 {
 	margin-bottom: 5px;
 }
 
+#navBtns {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
 .footer {
 	text-align: center;
 	position: relative;

@@ -48,13 +48,17 @@
     </div>
     <br/>
     {% raw %}
-    <div ng-controller="RepoDisplayCtrl">
-      <h4 ng-show="numRepos() != 0">We know about {{numRepos()}} {{language()}} repositories using Github issues.</h4>
+    <div ng-controller="RepoDisplayCtrl" ng-show="numRepos() != 0">
+      <h4>We know about {{numRepos()}} {{language()}} repositories using Github issues.</h4>
       <ul class="repoList">
-        <li ng-repeat="repo in repos()">
+        <li ng-repeat="repo in showRepos()">
           <a href="http://github.com/{{repo.name}}">{{repo.name}} with {{repo.open_issues}} open issues.</a>
         </li>
       </ul>
+      <div id="navBtns">
+        <button class="btn" ng-click="prevPage()" ng-disabled="pageNum() <= 0">Previous</button>
+        <button class="btn" ng-click="nextPage()" ng-disabled="(pageNum()+1) * reposPerPage >= numRepos()">Next</button>
+      </div>
     </div>
     {% endraw %}
 </div>
