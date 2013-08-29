@@ -10,21 +10,36 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    languages = db.distinct('language')
-    for i in range(len(languages)):
-        if languages[i] is None:
-            languages.pop(i)
-            break
     num_repos = db.find().count()
-    num_issues = db.aggregate([ {
-    	"$group": {
-    		"_id": "null",
-    		"total": {
-    			"$sum": "$open_issues"
-    		}
-    	}
-    }])
-    num_issues = num_issues['result'][0]['total']
+    db_languages = db.aggregate([ {
+        "$group": {
+            "_id": {
+                "language": "$language",
+            },
+            "num_repos": {
+                "$sum": 1,
+            },
+            "num_issues": {
+                "$sum": "$open_issues"
+            }
+        }},
+        {"$sort": {"num_repos": -1}
+    } ])
+
+    top_languages = db_languages['result'][0:6]
+    remaining = db_languages['result'][6:]
+    remaining.sort(key=lambda l: l["_id"]["language"])
+
+    languages = []
+    num_issues = 0
+    for l in top_languages + remaining:
+        lang = l["_id"]["language"]
+        if lang is not None:
+            languages.append(lang)
+            num_issues += l["num_issues"]
+        else:
+            languages.append("")
+
     return render_template('index.html', num_repos=num_repos, num_issues=num_issues,
                             languages=languages)
 
